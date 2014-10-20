@@ -1,0 +1,4 @@
+* * * * * root 'cd /var/app/current && bin/rails runner -e production 'Battle.updatecounts' >> log/cron_log.log 2>&1'
+
+
+
