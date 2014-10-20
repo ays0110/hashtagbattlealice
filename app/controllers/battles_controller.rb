@@ -34,8 +34,8 @@ class BattlesController < ApplicationController
     @battle = Battle.new(battle_params)
     
     #Cleanup hashtags
-    @battle.hashtag1 = battle.hashtag1.gsub('#', '')
-    @battle.hashtag2 = battle.hashtag2.gsub('#', '')
+    @battle.hashtag1 = @battle.hashtag1.gsub('#', '')
+    @battle.hashtag2 = @battle.hashtag2.gsub('#', '')
     @battle.user_id = current_user.id
     @battle.status = 1
     
