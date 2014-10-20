@@ -5,7 +5,7 @@ class BattlesController < ApplicationController
   # GET /battles
   # GET /battles.json
   def index
-    @battles = Battle.all
+    @battles = current_user.battles
   end
 
   # GET /battles/1
@@ -13,7 +13,7 @@ class BattlesController < ApplicationController
   def show
       @battle = Battle.find(params[:id])
       
-      #display
+      #display counts
       @hash1count = @battle.battlepoints.where(:hashtag=>1).last.tweetcount
       @hash2count = @battle.battlepoints.where(:hashtag=>2).last.tweetcount
       
@@ -32,9 +32,14 @@ class BattlesController < ApplicationController
   # POST /battles.json
   def create
     @battle = Battle.new(battle_params)
+    
+    #Cleanup hashtags
+    @battle.hashtag1 = battle.hashtag1.gsub('#', '')
+    @battle.hashtag2 = battle.hashtag2.gsub('#', '')
     @battle.user_id = current_user.id
     @battle.status = 1
     
+    #Pull in the ID of the newest tweet since creation
     @client = Twitter::REST::Client.new do |config|
         config.consumer_key        = "9v4sR5JGNX8ellOM1HvDpYsi9"
         config.consumer_secret     = "TNLyRCW94YmQzD6Oeqsi7SdqhSKnMJt4Ze6lndMf0L2AwnlF1B"
@@ -47,6 +52,7 @@ class BattlesController < ApplicationController
 
     respond_to do |format|
       if @battle.save
+          #Create starting point of 0 for each tag
           @battlepoint1 = Battlepoint.new(:battle=>@battle, :hashtag=>1, :tweetcount=>0)
           @battlepoint2 = Battlepoint.new(:battle=>@battle, :hashtag=>2, :tweetcount=>0)
           @battlepoint1.save
@@ -61,11 +67,30 @@ class BattlesController < ApplicationController
     end
   end
 
+
+  def endbattle
+      
+      #Only the creator can end the battle
+      @battle = Battle.find(params[:id])
+      if current_user.id == @battle.user_id
+          @battle.status = 0
+          @battle.save
+      end
+      
+      respond_to do |format|
+          format.html { redirect_to battle_path }
+      end
+  
+  end
+
   # PATCH/PUT /battles/1
   # PATCH/PUT /battles/1.json
+
   def update
     respond_to do |format|
-      if @battle.update(battle_params)
+        
+        #Only the creator can update the battle
+      if @battle.update(battle_params) && current_user.id == @battle.user_id
         format.html { redirect_to @battle, notice: 'Battle was successfully updated.' }
         format.json { render :show, status: :ok, location: @battle }
       else
@@ -78,7 +103,11 @@ class BattlesController < ApplicationController
   # DELETE /battles/1
   # DELETE /battles/1.json
   def destroy
-    @battle.destroy
+      
+      #Only the creator can destroy the battle
+    if current_user.id == @battle.user_id
+        @battle.destroy
+    end
     respond_to do |format|
       format.html { redirect_to battles_url, notice: 'Battle was successfully destroyed.' }
       format.json { head :no_content }

@@ -6,7 +6,7 @@
 
 <div id="selectbattle">
 	<select id="battle_select">
-        <option disabled selected class="hidden-option">Choose Your Battle</option>
+        <option disabled selected class="hidden-option">Choose a Battle</option>
         <% @battles.each do |battle| %>
         	<option value="<%=battle.id%>"><%=battle.hashtag1%> vs. <%=battle.hashtag2%></option>
         <% end %>

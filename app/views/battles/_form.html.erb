@@ -17,8 +17,11 @@
     <%= f.submit nil, :class => 'btn btn-primary' %>
 
 <% end %>
+	<a href="/battles/<%=@battle.id%>/endbattle">
+	<div class="btn btn-danger" style="width:113px;">End Battle</div></a>
 
 <script>
+
     $("#color1_select").dropkick({
     	change:function(value,label){
 			color = $(this).attr('value');

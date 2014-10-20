@@ -1,6 +1,24 @@
 <div style="text-align:center;">
 <div class="page-header">
-  <h3><span class="hash<%=@battle.hash1color%>"><%=@battle.hashtag1%></span> vs. <span class="hash<%=@battle.hash2color%>"><%=@battle.hashtag2%></span></h3>
+
+<% t = Time.now - @battle.created_at
+mm, ss = t.divmod(60)  
+hh, mm = mm.divmod(60)         
+dd, hh = hh.divmod(24)          
+%>
+
+	<h2>
+		<% if @battle.status == 1 %>
+		<span class="warm">Ongoing</span> Battle: 
+		<% else %>
+		<span class="cold">Ended</span> Battle: Ran for
+		<% end %>
+		<%= "%d days, %d hours, %d minutes and %d seconds" % [dd, hh, mm, ss]%>
+	</h2>
+	
+	<h2>
+		<span class="hash<%=@battle.hash1color%>"><%=@battle.hashtag1%></span> vs. <span class="hash<%=@battle.hash2color%>"><%=@battle.hashtag2%></span>
+	</h2>
 </div>
 
 <div class="progress hash<%=@battle.hash2color%>">
@@ -23,9 +41,11 @@
 
   
 </div>
+<br/><br/><br/><br/>
 
-
-
+<div style="font-family:'Raleway'; border:2px solid #98a7b2; background:#fff; padding:20px;">
+<%= line_chart(Battlepoint.where(:battle_id=>@battle.id).order('created_at desc').group(:hashtag).group(:created_at).average(:tweetcount) )%>
+</div>
 
 <% if false %>
 <div class="form-actions">
@@ -40,3 +60,20 @@
               :class => 'btn btn-danger' %>
 </div>
 <% end %>
+
+<script>
+length = Highcharts.charts.length - 1;
+Highcharts.charts[length].setTitle( { text: '#<%=@battle.hashtag1%> vs. #<%=@battle.hashtag2%>' }, { text: 'Tweets over time' } );
+Highcharts.charts[length].xAxis[0].setTitle({ text: 'Time'});
+Highcharts.charts[length].yAxis[0].setTitle({ text: 'Total Tweets'});
+Highcharts.charts[length].series[0].update({name:"#<%=@battle.hashtag2%>"}, false);
+Highcharts.charts[length].series[1].update({name:"#<%=@battle.hashtag1%>"}, false);
+Highcharts.charts[length].redraw();
+
+
+$('svg').css('font-family', '');
+$('#chart-1').css('font-family', '');
+
+
+
+        </script>

@@ -19,11 +19,14 @@
 
 # Learn more: http://github.com/javan/whenever
 
-set :output, "log/cron_log.log"
-set :environment, "development"
+set :output, "cron_log.log"
+set :environment, "production"
+
+every 1.minute do
+    command "cd /var/app/current && bundle exec ensure_one_cron_leader"
+end
 
 every 1.minute, :roles => [:leader] do
     #runner "Battle.updatecounts"
-    command "cd /var/app/current && bundle exec ensure_one_cron_leader"
     runner 'Battle.updatecounts'
 end

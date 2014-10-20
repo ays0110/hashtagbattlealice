@@ -12,6 +12,7 @@ gem "twitter-bootstrap-rails"
 gem 'sass-rails', '~> 4.0.3'
 gem 'twitter'
 gem 'whenever-elasticbeanstalk'
+gem 'chartkick'
 
 
 # Use Uglifier as compressor for JavaScript assets
