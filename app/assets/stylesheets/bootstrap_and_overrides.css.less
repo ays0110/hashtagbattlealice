@@ -1,0 +1,282 @@
+@import "twitter/bootstrap/bootstrap";
+@import "twitter/bootstrap/responsive";
+
+// Set the correct sprite paths
+@iconSpritePath: image-url("twitter/bootstrap/glyphicons-halflings.png");
+@iconWhiteSpritePath: image-url("twitter/bootstrap/glyphicons-halflings-white.png");
+
+// Set the Font Awesome (Font Awesome is default. You can disable by commenting below lines)
+@fontAwesomeEotPath: asset-url("fontawesome-webfont.eot");
+@fontAwesomeEotPath_iefix: asset-url("fontawesome-webfont.eot?#iefix");
+@fontAwesomeWoffPath: asset-url("fontawesome-webfont.woff");
+@fontAwesomeTtfPath: asset-url("fontawesome-webfont.ttf");
+@fontAwesomeSvgPath: asset-url("fontawesome-webfont.svg#fontawesomeregular");
+
+// Font Awesome
+@import "fontawesome/font-awesome";
+
+// Glyphicons
+//@import "twitter/bootstrap/sprites.less";
+
+// Your custom LESS stylesheets goes here
+//
+// Since bootstrap was imported above you have access to its mixins which
+// you may use and inherit here
+//
+// If you'd like to override bootstrap's own variables, you can do so here as well
+// See http://twitter.github.com/bootstrap/customize.html#variables for their names and documentation
+
+
+
+
+///////////////////////////////
+///////////////////////////////
+// TABLE OF CONTENTS
+///////////////////////////////
+///////////////////////////////
+//
+// [1.0] COLOR DECLARATIONS
+// [2.0] BASE
+//      [2.1] BASE: TYPOGRAPHY
+//      [2.2] BASE: PAGE ELEMENTS
+//      [2.3] BASE: DROPKICK
+// [3.0] INDEX PAGE
+// [4.0] BATTLE PAGE
+//
+///////////////////////////////
+///////////////////////////////
+
+
+
+
+
+///////////////////////////////
+// [1.0] COLOR DECLARATIONS
+///////////////////////////////
+
+@base-light: #e7eaed;
+@base-medium: #98a7b2;
+@base-dark: #667077;
+@accent-cold: #94b0c4;
+@accent-warm: #f58f00;
+@accent-grey: #8f979e;
+@white: #ffffff;
+@hash1: #f26c4f;
+@hash2: #f68e56;
+@hash3: #f58f00;
+@hash4: #3cb878;
+@hash5: #5674b9;
+@hash6: #a864a8;
+@hash7: #f26d7d;
+@hash8: #707070;
+
+///////////////////////////////
+// [2.0] BASE
+///////////////////////////////
+
+body{
+    background-color: @base-light;
+    font-family: 'Raleway', sans-serif;
+}
+
+footer{
+    margin-top:100px;
+}
+
+#header{
+text-align:center;
+margin-top:100px;
+margin-bottom:40px;
+}
+
+
+///////////////////////////////
+// [2.1] BASE: TYPOGRAPHY
+///////////////////////////////
+
+h1, h2, h3, h4, h5, h6{
+font-family: 'Fjalla One', sans-serif;
+text-transform: uppercase;
+}
+
+h1{
+color: @base-medium;
+}
+
+h3, .count{
+color: @base-dark;
+}
+
+.warm{
+color:@accent-warm;
+}
+
+.count{
+font-size:50px;
+font-family: 'Fjalla One', sans-serif;
+text-transform: uppercase;
+margin-left:30px;
+}
+
+.hashtagtitle{
+font-size:83px;
+font-family: 'Fjalla One', sans-serif;
+text-transform: uppercase;
+margin-left:20px;
+}
+
+.hash1{
+color: @hash1;
+}
+
+.hash2{
+color: @hash2;
+}
+
+.hash3{
+color: @hash3;
+}
+
+.hash4{
+color: @hash4;
+}
+
+.hash5{
+color: @hash5;
+}
+
+.hash6{
+color: @hash6;
+}
+
+.hash7{
+color: @hash7;
+}
+
+.hash8{
+color: @hash8;
+}
+
+
+///////////////////////////////
+// [2.2] BASE: PAGE ELEMENTS
+///////////////////////////////
+
+
+.btn{
+background-image:none;
+border:none;
+font-size:20px;
+font-family:'Fjalla One', sans-serif;
+text-transform:uppercase;
+border-radius:0px;
+padding:20px;
+}
+
+.btn-primary{
+background-color:@accent-cold;
+}
+
+.btn-primary:hover{
+background-color:@accent-warm;
+}
+
+
+///////////////////////////////
+// [2.3] BASE: DROPKICK
+///////////////////////////////
+
+.dk-select, .dk-select-multi {
+color:@base-dark;
+}
+
+#dk0-color1_select{
+.dk-option{color:white;}
+.dk-option-disabled{color:@base-medium;}
+
+}
+
+#dk1-color2_select{
+.dk-option{color:white;}
+.dk-option-disabled{color:@base-medium;}
+
+}
+
+div[id$="-1"], div[id*=" -1"] {background-color:@hash1;}
+div[id$="-2"], div[id*=" -2"] {background-color:@hash2;}
+div[id$="-3"], div[id*=" -3"] {background-color:@hash3;}
+div[id$="-4"], div[id*=" -4"] {background-color:@hash4;}
+div[id$="-5"], div[id*=" -5"] {background-color:@hash5;}
+div[id$="-6"], div[id*=" -6"] {background-color:@hash6;}
+div[id$="-7"], div[id*=" -7"] {background-color:@hash7;}
+div[id$="-8"], div[id*=" -8"] {background-color:@hash8;}
+
+
+
+
+///////////////////////////////
+// [3.0] INDEX PAGE
+///////////////////////////////
+
+
+#fronttext{
+text-align:center;
+margin-bottom:50px;
+}
+
+#selectbattle{
+text-align:center;
+font-size:18px;
+}
+
+
+
+///////////////////////////////
+// [4.0] BATTLE PAGE
+///////////////////////////////
+
+.bar.hash1, .progress.hash1{
+background-color:@hash1;
+background-image:none;
+}
+
+.bar.hash2, .progress.hash2{
+background-color:@hash2;
+background-image:none;
+}
+
+.bar.hash3, .progress.hash3{
+background-color:@hash3;
+background-image:none;
+}
+
+.bar.hash4, .progress.hash4{
+background-color:@hash4;
+background-image:none;
+}
+
+.bar.hash5, .progress.hash5{
+background-color:@hash5;
+background-image:none;
+}
+
+.bar.hash6, .progress.hash6{
+background-color:@hash6;
+background-image:none;
+}
+
+.bar.hash7, .progress.hash7{
+background-color:@hash7;
+background-image:none;
+}
+
+.bar.hash8, .progress.hash8{
+background-color:@hash8;
+background-image:none;
+}
+
+
+
+
+
+

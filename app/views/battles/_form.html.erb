@@ -1,0 +1,94 @@
+<%= form_for @battle, :html => { :class => 'form-horizontal' } do |f| %>
+
+      <%= f.text_field :hashtag1, :class => 'text_field', :placeholder=>"First Hashtag"%>
+   
+   
+   	  <%= select("battle", "hash1color", [["Red", 1], ["Orange", 2], ["Yellow", 3], ["Green", 4], ["Blue", 5], ["Purple", 6], ["Pink", 7], ["Grey", 8]], {:include_blank => false, :selected => 1 }, :id=>"color1_select") %>
+
+      <br/></br>
+   
+      <%= f.text_field :hashtag2, :class => 'text_field', :placeholder=>"Second Hashtag" %>
+
+ 	  <%= select("battle", "hash2color", [["Red", 1], ["Orange", 2], ["Yellow", 3], ["Green", 4], ["Blue", 5], ["Purple", 6], ["Pink", 7], ["Grey", 8]], {:include_blank => false, :selected => 1 }, :id=>"color2_select") %>
+
+      <br/></br>
+
+
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+
+<% end %>
+
+<script>
+    $("#color1_select").dropkick({
+    	change:function(value,label){
+			color = $(this).attr('value');
+			$("#dk0-color1_select .dk-selected").css('color', '#fff');
+			
+			if(color == '1'){
+				$("#dk0-color1_select .dk-selected").css('background-color', '#f26c4f');
+			}
+			else if(color == '2'){
+				$("#dk0-color1_select .dk-selected").css('background-color', '#f68e56');
+			}
+			else if(color == '3'){
+				$("#dk0-color1_select .dk-selected").css('background-color', '#f58f00');
+			}
+			else if(color == '4'){
+				$("#dk0-color1_select .dk-selected").css('background-color', '#3cb878');
+			}
+			else if(color == '5'){
+				$("#dk0-color1_select .dk-selected").css('background-color', '#5674b9');
+			}
+			else if(color == '6'){
+				$("#dk0-color1_select .dk-selected").css('background-color', '#a864a8');
+			}
+			else if(color == '7'){
+				$("#dk0-color1_select .dk-selected").css('background-color', '#f26d7d');
+			}
+			else if(color == '8'){
+				$("#dk0-color1_select .dk-selected").css('background-color', '#707070');
+			}
+			else{
+				$("#dk0-color1_select .dk-selected").css('background-color', '#fff');
+				$("#dk0-color1_select .dk-selected").css('color', '#98a7b2');
+			}
+		}
+	});
+	
+	$("#color2_select").dropkick({
+    	change:function(value,label){
+			color = $(this).attr('value');
+			$("#dk1-color2_select .dk-selected").css('color', '#fff');
+			
+			if(color == '1'){
+				$("#dk1-color2_select .dk-selected").css('background-color', '#f26c4f');
+			}
+			else if(color == '2'){
+				$("#dk1-color2_select .dk-selected").css('background-color', '#f68e56');
+			}
+			else if(color == '3'){
+				$("#dk1-color2_select .dk-selected").css('background-color', '#f58f00');
+			}
+			else if(color == '4'){
+				$("#dk1-color2_select .dk-selected").css('background-color', '#3cb878');
+			}
+			else if(color == '5'){
+				$("#dk1-color2_select .dk-selected").css('background-color', '#5674b9');
+			}
+			else if(color == '6'){
+				$("#dk1-color2_select .dk-selected").css('background-color', '#a864a8');
+			}
+			else if(color == '7'){
+				$("#dk1-color2_select .dk-selected").css('background-color', '#f26d7d');
+			}
+			else if(color == '8'){
+				$("#dk1-color2_select .dk-selected").css('background-color', '#707070');
+			}
+			else{
+				$("#dk1-color2_select .dk-selected").css('background-color', '#fff');
+				$("#dk1-color2_select .dk-selected").css('color', '#98a7b2');
+			}
+		}
+	});
+
+</script>
