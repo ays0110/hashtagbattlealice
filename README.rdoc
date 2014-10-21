@@ -4,7 +4,7 @@ This Rails app is a Hashtag Battle app created for Tint.
 It allows users to signup and sign in and create battles between two hashtags.
 The battle will count the number of tweets using that hashtag since the start of the battle
 
-Live version hosted here: http://hashtagbattlealice-env.elasticbeanstalk.com/
+Live version hosted here: http://hashtagbattlealice-env-iwc2jindyk.elasticbeanstalk.com/
 
 == TECHNICAL DETAILS
 
