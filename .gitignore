@@ -18,3 +18,5 @@
 Rakefile
 config/secrets.yml
 config/whenever-elasticbeanstalk.yml
+config/secrets.yml
+config/whenever-elasticbeanstalk.yml
