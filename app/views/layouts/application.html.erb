@@ -84,5 +84,9 @@
 		}
 	});
 
+	$( "#battle_select" ).change(function() {
+		window.location.href = "<%=root_url%>battles/" + $(this).attr('value');
+	});
+
   </script>
 </html>
