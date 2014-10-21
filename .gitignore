@@ -16,3 +16,5 @@
 /tmp
 .elasticbeanstalk/
 Rakefile
+config/secrets.yml
+config/whenever-elasticbeanstalk.yml
